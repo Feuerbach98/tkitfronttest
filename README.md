@@ -17,3 +17,5 @@
 {'stories': {'nodes': {'13': {'id': '13', 'type': 'command', 'properties': {'title': 'start'}}, '17': {'id': '17', 'type': 'action', 'properties': {'text': 'Приветствую, это бот опросник, созданый на базовой версии конструктора Telegram ботов :)', 'type': 'sendMessage'}}}, 'links': [{'from': '13', 'to': '17', 'port_value': 'null'}]}}
 
 ```
+
+Данные о нодах на холсте и связях между ними от ReactFlowChart, вы можете увидеть выполнив console.log(this.state) в Tkit компоненте 
