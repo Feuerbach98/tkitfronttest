@@ -13,10 +13,6 @@ class Tkit extends React.Component {
     constructor() {
         super()
         this.state = cloneDeep(chartSimple)
-        this.stories = {
-            nodes: {},
-            links: this.state.links
-        }
     }
 
     render() {
@@ -37,12 +33,7 @@ class Tkit extends React.Component {
 
                     }} callbacks={stateActions} />
                 </Content>
-
-                { chart.selected.type ? 
-                    <Sidebar isNodeEditMode={true} data={nodes} node={chart.selected}/>
-                :
-                    <Sidebar isNodeEditMode={false} data={nodes}/>
-                }
+                <Sidebar data={nodes}/>
             </div>
         )
     }
