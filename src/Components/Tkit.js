@@ -15,8 +15,16 @@ class Tkit extends React.Component {
         this.state = cloneDeep(chartSimple)
     }
 
+    selectNode = (node) => {
+        this.setState({
+            ...this.state,
+            selected: node,
+            NodesIsNotVisible: true
+        });
+    }
+
     render() {
-        const chart = this.state
+        const chart = this.state;
 
         const stateActions = mapValues(actions, (any) =>
             (...args) => this.setState(...args))
@@ -28,12 +36,18 @@ class Tkit extends React.Component {
                 <Content>
                     <FlowChartWithState initialValue={chart} config={{
                         snapToGrid: true,
+                        selectNode: this.selectNode,
                     }} Components={{
                         NodeInner: NodeInnerCustom, //ADD PORT CUSTOM
-
-                    }} callbacks={stateActions} />
+                    }} callbacks={stateActions} 
+                    />
                 </Content>
-                <Sidebar data={nodes}/>
+                <Sidebar
+                    data={nodes}
+                    NodesIsNotVisible={chart.NodesIsNotVisible}
+                    selectedNode={chart.selected}
+                    connections={chart}
+                />
             </div>
         )
     }
