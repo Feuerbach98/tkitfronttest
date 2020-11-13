@@ -75,3 +75,8 @@
 .node div {
 	cursor: pointer;
 }
+
+.edit-field__title::first-letter,
+.edit-field__label::first-letter {
+	text-transform: uppercase;
+}

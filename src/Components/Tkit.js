@@ -8,6 +8,8 @@ import Content from './Holst'
 import NodeInnerCustom from './NodeInnerCustom'
 import { chartSimple, nodes} from '../constants'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 class Tkit extends React.Component {
 
     constructor() {
@@ -21,6 +23,26 @@ class Tkit extends React.Component {
             selected: node,
             NodesIsNotVisible: true
         });
+    }
+
+    saveNode = (node) => {
+        this.setState((state) => ({
+            ...this.state,
+            selected: {},
+            NodesIsNotVisible: false,
+            nodes: {
+                ...state.nodes,
+                [node.id]: node
+            }
+        }));
+    }
+
+    cancelEdit = () => {
+        this.setState((state) => ({
+            ...this.state,
+            selected: {},
+            NodesIsNotVisible: false,
+        }));
     }
 
     render() {
@@ -46,6 +68,8 @@ class Tkit extends React.Component {
                     data={nodes}
                     NodesIsNotVisible={chart.NodesIsNotVisible}
                     selectedNode={chart.selected}
+                    saveNode={this.saveNode}
+                    cancelEdit={this.cancelEdit}
                     connections={chart}
                 />
             </div>

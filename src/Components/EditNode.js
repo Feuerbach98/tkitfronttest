@@ -5,48 +5,66 @@ export class EditNode extends React.Component {
         ...this.props.selectedNode,
     }
 
-    componentDidMount() {
-        const condition = Object.entries(this.state.properties.fields).length;
-        for (let i = 0; i < condition; i++) {
-            this.setState({
-                ...this.state,
-                ['value_' + i]: '',
-            });
-        }
-    }
-
     handleChange = (event) => {
         const { value, name } = event.target;
 
-        this.setState({
-            ['value_' + name]: value,
-        })
+        this.setState((state) => ({
+            ...this.state,
+            properties: {
+                ...state.properties,
+                fields: {
+                    ...state.properties.fields,
+                    [name]: {
+                        ...state.properties.fields[name],
+                        value: value,
+                    }
+                }
+            }
+        }))
     }
 
     render() {
-        const node = this.state.properties;
-        const fields = Object.entries(node.fields);
+        const node = this.state;
+        const fields = Object.entries(node.properties.fields);
 
         return (
-            <>
-                <h2>{node.title}</h2>
-                <p>{node.description}</p>
+            <div className="edit-field p-3">
+                <h2 className="edit-field__title">{node.properties.title}</h2>
+                <p>{node.properties.description}</p>
                 {fields.map((field, index) => {
                     return (
                         <React.Fragment key={index}>
-                            <label htmlFor={field[0]}>{field[0]}:</label>
+                            <label
+                                className="edit-field__label d-block"
+                                htmlFor={field[0]}>{field[0]}:
+                            </label>
                             <input
+                                className="d-block"
                                 id={field[0]}
-                                name={index}
+                                name={field[0]}
                                 type={field[1].type}
                                 required={field[1].is_required}
-                                value={this.state['value_' + index]}
+                                value={this.state.properties.fields[field[0]].value}
                                 onChange={this.handleChange}
                             ></input>
                         </React.Fragment>
                     )
                 })}
-            </>
+                <button
+                    type="sumbit"
+                    onClick={() => this.props.saveNode(node)}
+                    className="btn btn-primary my-3 mr-2"
+                >
+                    Save
+                </button>
+                <button
+                    type="button"
+                    onClick={this.props.cancelEdit}
+                    className="btn btn-danger my-3"
+                >
+                    Cancel
+                </button>
+            </div>
         )
     }
 }
