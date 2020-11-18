@@ -1,7 +1,7 @@
 {
   "main.css": "/tkitfronttest/static/css/main.86bd5c11.chunk.css",
-  "main.js": "/tkitfronttest/static/js/main.e144fb3d.chunk.js",
-  "main.js.map": "/tkitfronttest/static/js/main.e144fb3d.chunk.js.map",
+  "main.js": "/tkitfronttest/static/js/main.32460d29.chunk.js",
+  "main.js.map": "/tkitfronttest/static/js/main.32460d29.chunk.js.map",
   "static/css/1.7dafdefe.chunk.css": "/tkitfronttest/static/css/1.7dafdefe.chunk.css",
   "static/js/1.254f0446.chunk.js": "/tkitfronttest/static/js/1.254f0446.chunk.js",
   "static/js/1.254f0446.chunk.js.map": "/tkitfronttest/static/js/1.254f0446.chunk.js.map",
@@ -10,6 +10,6 @@
   "static/css/main.86bd5c11.chunk.css.map": "/tkitfronttest/static/css/main.86bd5c11.chunk.css.map",
   "static/css/1.7dafdefe.chunk.css.map": "/tkitfronttest/static/css/1.7dafdefe.chunk.css.map",
   "index.html": "/tkitfronttest/index.html",
-  "precache-manifest.4257202e37848f2fdc5da24c14de3e2f.js": "/tkitfronttest/precache-manifest.4257202e37848f2fdc5da24c14de3e2f.js",
+  "precache-manifest.e31f4a9585d361bf0dcf586f94c98059.js": "/tkitfronttest/precache-manifest.e31f4a9585d361bf0dcf586f94c98059.js",
   "service-worker.js": "/tkitfronttest/service-worker.js"
 }
