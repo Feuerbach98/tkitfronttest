@@ -20,7 +20,7 @@ class Tkit extends React.Component {
     selectNode = (node) => {
         this.setState({
             ...this.state,
-            selected: node,
+            selected: this.state.nodes[node.id],
             NodesIsNotVisible: true
         });
     }
