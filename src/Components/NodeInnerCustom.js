@@ -21,7 +21,7 @@ class NodeInnerCustom extends React.Component {
         switch (this.node.type) {
             case 'command':
                 return (
-                    <Node node={this.node} handleNodeClick={() => null}/>
+                    <Node node={this.node} handleNodeClick={() => this.config.selectNode(this.node)}/>
                 )
             case 'state':
                 return (
