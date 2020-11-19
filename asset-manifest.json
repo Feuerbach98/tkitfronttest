@@ -1,15 +1,15 @@
 {
   "main.css": "/tkitfronttest/static/css/main.86bd5c11.chunk.css",
-  "main.js": "/tkitfronttest/static/js/main.32460d29.chunk.js",
-  "main.js.map": "/tkitfronttest/static/js/main.32460d29.chunk.js.map",
+  "main.js": "/tkitfronttest/static/js/main.c9366b59.chunk.js",
+  "main.js.map": "/tkitfronttest/static/js/main.c9366b59.chunk.js.map",
   "static/css/1.7dafdefe.chunk.css": "/tkitfronttest/static/css/1.7dafdefe.chunk.css",
-  "static/js/1.254f0446.chunk.js": "/tkitfronttest/static/js/1.254f0446.chunk.js",
-  "static/js/1.254f0446.chunk.js.map": "/tkitfronttest/static/js/1.254f0446.chunk.js.map",
+  "static/js/1.d3bd6f77.chunk.js": "/tkitfronttest/static/js/1.d3bd6f77.chunk.js",
+  "static/js/1.d3bd6f77.chunk.js.map": "/tkitfronttest/static/js/1.d3bd6f77.chunk.js.map",
   "runtime~main.js": "/tkitfronttest/static/js/runtime~main.4822b292.js",
   "runtime~main.js.map": "/tkitfronttest/static/js/runtime~main.4822b292.js.map",
   "static/css/main.86bd5c11.chunk.css.map": "/tkitfronttest/static/css/main.86bd5c11.chunk.css.map",
   "static/css/1.7dafdefe.chunk.css.map": "/tkitfronttest/static/css/1.7dafdefe.chunk.css.map",
   "index.html": "/tkitfronttest/index.html",
-  "precache-manifest.e31f4a9585d361bf0dcf586f94c98059.js": "/tkitfronttest/precache-manifest.e31f4a9585d361bf0dcf586f94c98059.js",
+  "precache-manifest.dfc4e5cdd02d363c0ba0d0f36e3e48fb.js": "/tkitfronttest/precache-manifest.dfc4e5cdd02d363c0ba0d0f36e3e48fb.js",
   "service-worker.js": "/tkitfronttest/service-worker.js"
 }
