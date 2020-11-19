@@ -8,15 +8,68 @@ import Content from './Holst'
 import NodeInnerCustom from './NodeInnerCustom'
 import { chartSimple, nodes} from '../constants'
 
-class Tkit extends React.Component {
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+class Tkit extends React.PureComponent {
 
     constructor() {
         super()
         this.state = cloneDeep(chartSimple)
     }
 
+    selectNode = (node) => {
+        const x = this.state.nodes[node.id] ? this.state.nodes[node.id] : node
+        this.setState({
+            ...this.state,
+            selected: x,
+            NodesIsNotVisible: true
+        });
+    }
+
+    saveNode = (node) => {
+        this.setState((state) => ({
+            ...this.state,
+            selected: {},
+            NodesIsNotVisible: false,
+            nodes: {
+                ...state.nodes,
+                [node.id]: node
+            }
+        }));
+    }
+
+    cancelEdit = () => {
+        this.setState((state) => ({
+            ...this.state,
+            selected: {},
+            NodesIsNotVisible: false,
+        }));
+    }
+
+    onChange = (event) => {
+        const { value, name } = event.target;
+
+        this.setState((state) => ({
+            ...this.state,
+            selected: {
+                ...state.selected,
+                properties: {
+                    ...state.selected.properties,
+                    fields: {
+                        ...state.selected.properties.fields,
+                        [name]: {
+                            ...state.selected.properties.fields[name],
+                            value: value,
+                        }
+                    }
+                }
+            }
+        }))
+
+    }
+
     render() {
-        const chart = this.state
+        const chart = this.state;
 
         const stateActions = mapValues(actions, (any) =>
             (...args) => this.setState(...args))
@@ -28,12 +81,22 @@ class Tkit extends React.Component {
                 <Content>
                     <FlowChartWithState initialValue={chart} config={{
                         snapToGrid: true,
+                        selectNode: this.selectNode,
+                        currentNode: chart.selected
                     }} Components={{
                         NodeInner: NodeInnerCustom, //ADD PORT CUSTOM
-
-                    }} callbacks={stateActions} />
+                    }} callbacks={stateActions} 
+                    />
                 </Content>
-                <Sidebar data={nodes}/>
+                <Sidebar
+                    data={nodes}
+                    NodesIsNotVisible={chart.NodesIsNotVisible}
+                    selectedNode={chart.selected}
+                    saveNode={this.saveNode}
+                    cancelEdit={this.cancelEdit}
+                    onChange={this.onChange}
+                    connections={chart}
+                />
             </div>
         )
     }

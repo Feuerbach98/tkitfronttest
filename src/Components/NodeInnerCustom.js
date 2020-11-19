@@ -3,7 +3,7 @@ import React from 'react'
 const Node = ({ node, handleNodeClick}) => {
 
     return (
-        <div className="node">
+        <div className="node" onClick={() => handleNodeClick(node)}>
             {node.properties.title}
         </div>
     )
@@ -11,30 +11,29 @@ const Node = ({ node, handleNodeClick}) => {
 
 class NodeInnerCustom extends React.Component {
 
-    constructor({ node, config}) {
+    constructor({ node, config, currentNode }) {
         super();
-        this.node = node;
+        this.node = currentNode ? currentNode : node;
         this.config = config;
     }
 
     render() {
-
         switch (this.node.type) {
             case 'command':
                 return (
-                    <Node node={this.node} />
+                    <Node node={this.node} handleNodeClick={() => this.config.selectNode(this.node)}/>
                 )
             case 'state':
                 return (
-                    <Node node={this.node} handleClickEvent={this.handleClickEvent} />
+                    <Node node={this.node} handleNodeClick={() => this.config.selectNode(this.node)} />
                 )
             case 'action':
                 return (
-                    <Node node={this.node} handleClickEvent={this.handleClickEvent} />
+                    <Node node={this.node} handleNodeClick={() => this.config.selectNode(this.node)} />
                 )
             case 'condition':
                 return (
-                    <Node node={this.node} handleClickEvent={this.handleClickEvent} />
+                    <Node node={this.node} handleNodeClick={() => this.config.selectNode(this.node)} />
                 )
 
             default:
