@@ -11,9 +11,9 @@ const Node = ({ node, handleNodeClick}) => {
 
 class NodeInnerCustom extends React.Component {
 
-    constructor({ node, config }) {
+    constructor({ node, config, currentNode }) {
         super();
-        this.node = node;
+        this.node = currentNode ? currentNode : node;
         this.config = config;
     }
 

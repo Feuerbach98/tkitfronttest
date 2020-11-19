@@ -10,7 +10,7 @@ import { chartSimple, nodes} from '../constants'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class Tkit extends React.Component {
+class Tkit extends React.PureComponent {
 
     constructor() {
         super()
@@ -18,9 +18,10 @@ class Tkit extends React.Component {
     }
 
     selectNode = (node) => {
+        const x = this.state.nodes[node.id] ? this.state.nodes[node.id] : node
         this.setState({
             ...this.state,
-            selected: this.state.nodes[node.id],
+            selected: x,
             NodesIsNotVisible: true
         });
     }
@@ -45,6 +46,28 @@ class Tkit extends React.Component {
         }));
     }
 
+    onChange = (event) => {
+        const { value, name } = event.target;
+
+        this.setState((state) => ({
+            ...this.state,
+            selected: {
+                ...state.selected,
+                properties: {
+                    ...state.selected.properties,
+                    fields: {
+                        ...state.selected.properties.fields,
+                        [name]: {
+                            ...state.selected.properties.fields[name],
+                            value: value,
+                        }
+                    }
+                }
+            }
+        }))
+
+    }
+
     render() {
         const chart = this.state;
 
@@ -59,6 +82,7 @@ class Tkit extends React.Component {
                     <FlowChartWithState initialValue={chart} config={{
                         snapToGrid: true,
                         selectNode: this.selectNode,
+                        currentNode: chart.selected
                     }} Components={{
                         NodeInner: NodeInnerCustom, //ADD PORT CUSTOM
                     }} callbacks={stateActions} 
@@ -70,6 +94,7 @@ class Tkit extends React.Component {
                     selectedNode={chart.selected}
                     saveNode={this.saveNode}
                     cancelEdit={this.cancelEdit}
+                    onChange={this.onChange}
                     connections={chart}
                 />
             </div>

@@ -5,26 +5,8 @@ export class EditNode extends React.Component {
         ...this.props.selectedNode,
     }
 
-    handleChange = (event) => {
-        const { value, name } = event.target;
-
-        this.setState((state) => ({
-            ...this.state,
-            properties: {
-                ...state.properties,
-                fields: {
-                    ...state.properties.fields,
-                    [name]: {
-                        ...state.properties.fields[name],
-                        value: value,
-                    }
-                }
-            }
-        }))
-    }
-
     render() {
-        const node = this.state;
+        const node = this.props.selectedNode
         const fields = Object.entries(node.properties.fields);
 
         return (
@@ -44,8 +26,8 @@ export class EditNode extends React.Component {
                                 name={field[0]}
                                 type={field[1].type}
                                 required={field[1].is_required}
-                                value={this.state.properties.fields[field[0]].value}
-                                onChange={this.handleChange}
+                                value={node.properties.fields[field[0]].value}
+                                onChange={this.props.onChange}
                             ></input>
                         </React.Fragment>
                     )

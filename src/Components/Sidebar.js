@@ -32,6 +32,7 @@ class Sidebar extends Component {
                         connections={this.props.connections}
                         saveNode={this.props.saveNode}
                         cancelEdit={this.props.cancelEdit}
+                        onChange={this.props.onChange}
                     />
                 )}
             </div>
